@@ -1,0 +1,40 @@
+
+services:
+  mongo:
+    image: mongo:6.0
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - moustass-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongo
+    networks:
+      - moustass-net
+
+  frontend:
+    build:
+      context: ./frontend       
+      dockerfile: Dockerfile    
+    ports:
+      - '3000:80'
+    depends_on:
+      - backend
+    networks:
+      - moustass-net
+
+volumes:
+  mongo-data:
+
+networks:
+  moustass-net:
+    driver: bridge
