@@ -22,13 +22,8 @@ app.use('/admin/users', adminUserRoutes);
 app.use('/messages', messageRoutes);
 app.use('/users', usersRoutes); 
 
-if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(process.env.MONGO_URI).then(() => {
-    app.listen(process.env.PORT || 3001);
-  });
-}
 // Lancement
-/* const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Backend démarré sur le port ${port}`)); */
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Backend démarré sur le port ${port}`));
 
 export default app;
