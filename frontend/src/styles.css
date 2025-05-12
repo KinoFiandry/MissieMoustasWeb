@@ -1,0 +1,212 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.header button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #d9534f;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.section {
+  margin-bottom: 30px;
+}
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 4px;
+}
+.message-list ul {
+  list-style: none;
+  padding: 0;
+}
+.message-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #fafafa;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.message-list .info {
+  flex: 1;
+}
+.message-list .actions button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #0275d8;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.message-list .actions button.delete {
+  background-color: #d9534f;
+}
+.audio-recorder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.audio-recorder button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #5cb85c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.select-recipient {
+  margin-left: auto;
+}
+
+/* Styles pour Login et Signup */
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+.container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.container input {
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.container button {
+  padding: 10px;
+  margin-top: 12px;
+  border: none;
+  background-color: #0275d8;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.container button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+.container p {
+  text-align: center;
+  margin-top: 16px;
+}
+.container p a {
+  color: #0275d8;
+  text-decoration: none;
+}
+.container p a:hover {
+  text-decoration: underline;
+}
+
+.message-list .actions button:hover,
+.audio-recorder button:hover,
+.header button:hover,
+.container button:hover {
+  opacity: 0.9;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.header button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #d9534f;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.section {
+  margin-bottom: 30px;
+}
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 4px;
+}
+.message-list ul {
+  list-style: none;
+  padding: 0;
+}
+.message-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #fafafa;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.message-list .info {
+  flex: 1;
+}
+.message-list .actions button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #0275d8;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.message-list .actions button.delete {
+  background-color: #d9534f;
+}
+.audio-recorder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.audio-recorder button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #5cb85c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.select-recipient {
+  margin-left: auto;
+}

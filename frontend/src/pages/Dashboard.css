@@ -1,0 +1,16 @@
+/* src/pages/Dashboard.css */
+.dashboard { padding: 20px; font-family: 'Segoe UI', sans-serif; background: #eef2f7; }
+.dashboard-header { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.user-info { display: flex; align-items: center; }
+.avatar { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; }
+.username { margin: 0; font-size: 1.2rem; }
+.status { font-size: 0.9rem; color: #4caf50; }
+.security-status { display: flex; align-items: center; }
+.indicator { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
+.indicator.secure { background: #4caf50; }
+.indicator.insecure { background: #f44336; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
+.btn.logout { background: #f44336; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+.recorder-section, .messages-section { margin-top: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.controls { display: flex; align-items: center; gap: 15px; }
+.recipient-select { padding: 6px 8px; border-radius: 4px; border: 1px solid #ccc; }
