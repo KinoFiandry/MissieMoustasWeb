@@ -122,11 +122,12 @@ jobs:
           projectBaseDir: .
           args: >
             -Dsonar.organization=KinoFiandry
-            -Dsonar.projectKey=KinoFiandry_MissieMoustasWeb_9e6dece9dcdb810ffdb73f0acc6057b1ff1933c5
+            -Dsonar.projectKey=KinoFiandry_MissieMoustasWeb
             -Dsonar.sources=backend,frontend/src
             -Dsonar.tests=backend/__tests__,frontend/src
             -Dsonar.test.inclusions=**/*.test.js,**/*.spec.js
             -Dsonar.javascript.lcov.reportPaths=backend/coverage/lcov.info,frontend/coverage/lcov.info
+            -Dsonar.branch.name=main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
