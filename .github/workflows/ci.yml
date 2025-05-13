@@ -96,17 +96,37 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: npm run build
-      - name: Cache Sonar packages
+  sonarcloud:
+    name: Analyse SonarCloud
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java (pour sonar-scanner)
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Sonar
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      - name: SonarCloud Scan
+      - name: Lancer SonarCloud
         uses: sonarsource/sonarcloud-github-action@v2
         with:
-          organization: KinoFiandry            
-          projectKey: KinoFiandry_MissieMoustasWeb_9e6dece9dcdb810ffdb73f0acc6057b1ff1933c5
-          projectName: MissieMoustassWeb
+          projectBaseDir: .
+          args: >
+            -Dsonar.organization=KinoFiandry
+            -Dsonar.projectKey=KinoFiandry_MissieMoustasWeb_9e6dece9dcdb810ffdb73f0acc6057b1ff1933c5
+            -Dsonar.sources=backend,frontend/src
+            -Dsonar.tests=backend/__tests__,frontend/src
+            -Dsonar.test.inclusions=**/*.test.js,**/*.spec.js
+            -Dsonar.javascript.lcov.reportPaths=backend/coverage/lcov.info,frontend/coverage/lcov.info
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
