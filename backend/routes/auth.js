@@ -28,7 +28,7 @@ const signupValidation = [
   body('password')
     .notEmpty().withMessage('Le mot de passe est requis')
     .isLength({ min: 8 }).withMessage('Le mot de passe doit contenir au moins 8 caractères')
-    .matches(/[0-9]/).withMessage('Le mot de passe doit contenir au moins un chiffre')
+    .matches(/\d/).withMessage('Le mot de passe doit contenir au moins un chiffre')
     .matches(/[A-Z]/).withMessage('Le mot de passe doit contenir au moins une majuscule'),
   body('confirmPassword')
     .notEmpty().withMessage('La confirmation de mot de passe est requise')

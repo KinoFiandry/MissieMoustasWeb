@@ -83,7 +83,7 @@ export default function Dashboard() {
         <div className="user-info">
           <img src={user.avatar || '/avatar.png'} alt="avatar" className="avatar" />
           <div>
-            <h2 className="username">{user.fullName || user.id}</h2>
+            <h2 className="username">{user.fullName || user.username}</h2>
             <span className="status online">Online</span>
           </div>
         </div>
