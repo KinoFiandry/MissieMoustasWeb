@@ -24,12 +24,21 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 10);
-  next();
+  try {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
 
-UserSchema.methods.comparePassword = function(plain) {
-  return bcrypt.compare(plain, this.password);
+UserSchema.methods.comparePassword = function(candidatePassword) {
+  if (!candidatePassword || !this.password) {
+    // Si l'un des arguments est manquant, on lève une erreur explicite
+    throw new Error('data and hash arguments required');
+  }
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 export default mongoose.model('User', UserSchema);
