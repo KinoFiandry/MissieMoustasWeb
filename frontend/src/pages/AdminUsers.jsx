@@ -8,11 +8,13 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [form, setForm] = useState({ fullName: '', username: '', email: '', password: '' });
   const [editingId, setEditingId] = useState(null);
-
+  
   useEffect(() => {
     fetchUsers();
   }, []);
-
+  if (user.role !== 'admin') {
+       return <p>Accès non autorisé</p>;
+  }
   const fetchUsers = async () => {
     const { data } = await api.get('/admin/users');
     setUsers(data);
