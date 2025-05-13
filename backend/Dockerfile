@@ -5,13 +5,13 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copier package.json et package-lock.json
-COPY backend/package*.json ./
+COPY package*.json ./
 
 # Installer les dépendances
 RUN npm ci --only=production
 
 # Copier le code
-COPY backend/ ./
+COPY . ./
 
 # Exposer le port de l'API
 EXPOSE 3001

@@ -40,6 +40,7 @@ router.post(
   '/signup',
   signupValidation,
   async (req, res) => {
+    console.log('🚀 Requête signup reçue:', req.body);
     // 1. Vérification des erreurs de validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -60,7 +61,8 @@ router.post(
       // 3. Création et sauvegarde de l'utilisateur
       const user = new User({ fullName, username, email, password, publicKey });
       await user.save();
-
+      console.log('Utilisateur enregistré:', user._id);
+      console.log('Données en base:', await User.findById(user._id).lean());
       // 4. Envoi de la privateKey côté client
       res.status(201).json({ userId: user._id, privateKey });
 
@@ -96,23 +98,28 @@ router.post(
     }
 
     const { usernameOrEmail, password } = req.body;
+    const identifier = usernameOrEmail.trim().toLowerCase();
     console.log('LOGIN payload:', req.body);
 
     try {
       // 2. Recherche de l'utilisateur par email ou username
       const user = await User.findOne({
         $or: [
-          { username: usernameOrEmail.toLowerCase() },
-          { email:    usernameOrEmail.toLowerCase() }
-        ]
+        { username: identifier },
+        { email:    identifier }
+      ]
       });
     console.log('User found:', user ? user._id : null);
-      if (!user || !(await user.comparePassword(password))) {
-        const passwordOk = await user.comparePassword(password);
-        console.log('Password match?', passwordOk);
-        if (!passwordOk) {
-        return res.status(401).json({ message: 'Identifiants invalides' });
-      }}
+      if (!user) {
+      // On renvoie un 401 avant d'appeler comparePassword
+      return res.status(401).json({ message: 'Identifiants invalides' });
+    }
+
+    // comparePassword existe toujours ici
+    const match = await user.comparePassword(password);
+    if (!match) {
+      return res.status(401).json({ message: 'Identifiants invalides' });
+    }
 
       // 3. Génération du JWT
       const token = jwt.sign({ id: user._id, role: user.role }, secret, {
