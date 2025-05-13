@@ -128,6 +128,8 @@ jobs:
             -Dsonar.test.inclusions=**/*.test.js,**/*.spec.js
             -Dsonar.javascript.lcov.reportPaths=backend/coverage/lcov.info,frontend/coverage/lcov.info
             -Dsonar.branch.name=main
+            -Dsonar.exclusions=**/node_modules/**,**/*.flow
+            -Dsonar.cfamily.file.suffixes=-
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
