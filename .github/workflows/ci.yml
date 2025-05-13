@@ -121,7 +121,7 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.organization=KinoFiandry
+            -Dsonar.organization=kinofiandry
             -Dsonar.projectKey=KinoFiandry_MissieMoustasWeb
             -Dsonar.sources=backend,frontend/src
             -Dsonar.tests=backend/__tests__,frontend/src
