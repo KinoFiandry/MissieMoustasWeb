@@ -13,31 +13,46 @@ services:
     networks:
       - moustass-net
 
-  backend:
+  api:            
     build:
       context: ./backend
       dockerfile: Dockerfile
     env_file:
       - ./backend/.env
     ports:
-      - '3001:3001'
+      - "3001:3001"
     depends_on:
       - mongo
     networks:
       - moustass-net
 
-  frontend:
+  ui:            
     build:
       context: ./frontend       
       dockerfile: Dockerfile 
       args:
-       - REACT_APP_API_URL=http://backend:3001
+       - REACT_APP_API_URL=http://api:3001
     environment:
-      - REACT_APP_API_URL=http://backend:3001   
+      - REACT_APP_API_URL=http://api:3001   
     ports:
-      - '3000:80'
+      - "3000:80"
     depends_on:
-      - backend
+      - api
+    networks:
+      - moustass-net
+  
+  proxy:
+    build: 
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./proxy/logs:/usr/local/apache2/logs
+    depends_on:
+      - api
+      - ui
     networks:
       - moustass-net
 
